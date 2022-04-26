@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        url: `https://musosoft.com/graphql`,
+        url: `https://wp.musosoft.com/graphql`,
         develop: {
           hardCacheMediaFiles: true,
         },
