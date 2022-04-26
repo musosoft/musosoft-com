@@ -1,52 +1,53 @@
 {
-  "name": "gatsby-starter-wordpress-blog",
-  "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "name": "musosoft-com",
+  "description": "Project powered by Gatsby and WordPress",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com> and Tyler Barnes <tylerdbarnes@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "author": "muso.sk",
+  "repository": "https://github.com/musosoft/musosoft-com",
+  "license": "MIT",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
-  },
   "scripts": {
+    "postinstall": "gatsby telemetry --disable",
+    "clean": "gatsby clean",
+    "start": "npm run develop",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "reinstall": "run-script-os",
+    "reinstall:nix": "npm run clean && rm -rf node_modules/ && npm cache clean --force && rm -rf package-lock.json && npm install",
+    "reinstall:windows": "npm run clean && rd /s /q node_modules && npm cache clean --force && del package-lock.json && npm install",
+    "build:tailwind": "NODE_ENV=production postcss src/styles/global.css -o src/styles/tailwind.css",
+    "watch:tailwind": "NODE_ENV=development postcss src/styles/global.css -o src/styles/tailwind.css -w",
+    "upgrade": "run-script-os",
+    "upgrade:macos": "brew upgrade node && npm install -g npm@latest && npm-upgrade && npm update",
+    "upgrade:windows": "powershell Start-Process powershell -Verb runAs -ArgumentList 'choco upgrade nodejs' && npm install -g npm@latest && npm-upgrade && npm update"
   },
   "dependencies": {
-    "gatsby": "^4.0.0",
-    "gatsby-plugin-image": "^2.0.0",
-    "gatsby-plugin-manifest": "^4.0.0",
-    "gatsby-plugin-offline": "^5.0.0",
-    "gatsby-plugin-react-helmet": "^5.0.0",
-    "gatsby-plugin-sharp": "^4.0.0",
-    "gatsby-source-filesystem": "^4.0.0",
-    "gatsby-source-wordpress": "^6.0.0",
-    "gatsby-transformer-sharp": "^4.0.0",
-    "html-react-parser": "^1.1.1",
-    "lodash": "^4.17.20",
-    "postcss": "^8.2.10",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^5.2.1",
+    "gatsby": "^4.12.1",
+    "gatsby-plugin-image": "^2.12.1",
+    "gatsby-plugin-manifest": "^4.12.1",
+    "gatsby-plugin-offline": "^5.12.1",
+    "gatsby-plugin-react-helmet": "^5.12.1",
+    "gatsby-plugin-sharp": "^4.12.1",
+    "gatsby-source-filesystem": "^4.12.1",
+    "gatsby-source-wordpress": "^6.12.2",
+    "gatsby-transformer-sharp": "^4.12.1",
+    "html-react-parser": "^1.4.12",
+    "lodash": "^4.17.21",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-helmet": "^6.1.0",
     "typeface-merriweather": "1.1.13",
     "typeface-montserrat": "1.1.13"
   },
   "devDependencies": {
-    "dumper.js": "^1.3.1",
-    "prettier": "2.2.1"
+    "npm-upgrade": "^3.1.0",
+    "postcss": "^8.4.12",
+    "prettier": "2.6.2",
+    "run-script-os": "^1.1.6",
+    "tailwindcss": "^3.0.24"
   }
 }
